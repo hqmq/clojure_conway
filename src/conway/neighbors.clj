@@ -16,7 +16,7 @@
     (get-cell-status grid (+ row_idx 1) col_idx)
     (get-cell-status grid (+ row_idx 1) (+ col_idx 1))])))
 
-(defn neighbor-grid [grid]
+(defn grid-count [grid]
   (vec (map-indexed (fn [row_idx, row]
     (vec (map-indexed (fn [col_idx, cell]
       (count-neighbors grid row_idx col_idx))

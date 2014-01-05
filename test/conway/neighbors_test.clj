@@ -1,6 +1,6 @@
 (ns conway.neighbors-test
   (:require [clojure.test :refer :all]
-            [conway.neighbors :refer :all]))
+            [conway.neighbors :as neighbs]))
 
 (def grid1 [[:dead  :dead  :dead ]
             [:alive :dead  :dead ]
@@ -14,4 +14,4 @@
 
 (deftest neighbors-test
   (testing "Counts neighbors"
-    (is (= neighbors1 (neighbor-grid grid1)))))
+    (is (= neighbors1 (neighbs/grid-count grid1)))))
