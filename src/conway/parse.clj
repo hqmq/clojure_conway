@@ -7,6 +7,6 @@
     :else :dead))
 
 (defn parse [board_string]
-  (map (fn [line]
-    (map character-to-cell line))
-      (str/split-lines board_string)))
+  (vec (map (fn [line]
+    (vec (map character-to-cell line)))
+      (str/split-lines board_string))))
