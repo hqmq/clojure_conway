@@ -12,4 +12,6 @@
 
 (deftest generation-test
   (testing "generation rules"
-    (is (= grid2 (gen/next-gen grid1)))))
+    (is (= grid2 (gen/next-gen grid1))))
+    (is (vector? (gen/next-gen grid1)))
+    (is (vector? (first (gen/next-gen grid1)))))

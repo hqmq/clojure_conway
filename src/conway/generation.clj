@@ -8,7 +8,7 @@
     :else :dead))
 
 (defn next-gen [grid]
-  (map (fn [row]
-    (map (fn [cell] (next-gen-cell (first cell) (last cell)))
-    row))
-  (neighbs/grid-with-counts grid)))
+  (vec (map (fn [row]
+    (vec (map (fn [cell] (next-gen-cell (first cell) (last cell)))
+    row)))
+  (neighbs/grid-with-counts grid))))
