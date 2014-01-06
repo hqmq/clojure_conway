@@ -22,3 +22,10 @@
       (count-neighbors grid row_idx col_idx))
     row)))
   grid)))
+
+(defn grid-with-counts [grid]
+  (vec (map-indexed (fn [row_idx, row]
+    (vec (map-indexed (fn [col_idx, cell]
+      [cell, (count-neighbors grid row_idx col_idx)])
+    row)))
+  grid)))

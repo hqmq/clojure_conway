@@ -10,4 +10,6 @@ o o o")
 
 (deftest board-parse-test
   (testing "Parsing the intial board string"
-    (is (= grid (p/parse board)))))
+    (is (= grid (p/parse board))))
+  (testing "Handles trailing newlines"
+    (is (= grid (p/parse (str board "\n"))))))
