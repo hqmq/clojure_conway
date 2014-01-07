@@ -10,8 +10,15 @@
 (defn -main [board_file]
   (def board (slurp (io/reader (io/file board_file))))
   (def grid (atom (parse/parse board)))
-  (while true
-    (clear-screen)
-    (.print (System/out) (parse/render @grid))
-    (swap! grid gen/next-gen)
-    (Thread/sleep 300)))
+  (def generation (atom 1))
+  (def changed (atom true))
+  (while (not (not @changed))
+    (do
+      (clear-screen)
+      (.println (System/out) (parse/render @grid))
+      (.println (System/out) (format "Generation: %6d" @generation))
+      (def next_grid (gen/next-gen @grid))
+      (reset! changed (not (= next_grid @grid)))
+      (reset! grid next_grid)
+      (swap! generation inc)
+      (Thread/sleep 50))))
